@@ -7,34 +7,8 @@ const https = require('https');
 var Promise = require('bluebird')
 
 
+
 // This function should retrieve the first line of the file at `filePath`
-// var pluckFirstLineFromFile = function (filePath, callback) {
-//   fs.readFile(filePath, (err, data) => {
-//     if (err) {
-//       callback(err);
-//     } else {
-//       callback(null, data.toString().split("\n")[0]);
-//     }
-//   })
-// };
-
-// const myFirstPromise = new Promise((resolve, reject) => {
-//   // do something asynchronous which eventually calls either:
-//   //
-//   //   resolve(someValue); // fulfilled
-//   // or
-//   //   reject("failure reason"); // rejected
-// });
-var pluckFirstLineFromFile = function (filePath, callback) {
-  return new Promise((resolve, reject) => {
-    fs.readFile(filePath, (err, data) => {
-
-    })
-      resolve(null, data.toString().split("\n")[0]);
-      reject(err);
-  });
-}
-
 var pluckFirstLineFromFile = function (filePath, callback) {
   fs.readFile(filePath, (err, data) => {
     if (err) {

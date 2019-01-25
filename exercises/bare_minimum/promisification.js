@@ -8,6 +8,7 @@ var request = require('request');
 var crypto = require('crypto');
 var Promise = require('bluebird');
 
+
 // (1) Asyncronous HTTP request
 var getGitHubProfile = function(user, callback) {
   var options = {
