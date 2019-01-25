@@ -8,19 +8,23 @@
  * HINT: We exported some similar promise-returning functions in previous exercises
  */
 
-var fs = Promise.promisify(require('fs'));
+var fs = require('fs');
 var Promise = require('bluebird');
-var crypto = require('crypto');
-var request = require('request');
 
 
+var pluckFirstLineFromFileAsync = require('./promiseConstructor').pluckFirstLineFromFileAsync;
+var getGitHubProfileAsync = require('./promisification').getGitHubProfileAsync;
+var writeFileAsync = Promise.promisify(fs.writeFile);
+// or Promise.promisifyAll(fs) then user fs.writeFileAsync
 
 var fetchProfileAndWriteToFile = function(readFilePath, writeFilePath) {
-  return fs.readFileAsync((readFilePath, 'utf8') => {
-        
-  })
-};
 
+  return pluckFirstLineFromFileAsync.pluckFirstLineFromFileAsync(readFilePath)
+    .then(getGitHubProfileAsync)
+    .then(function(profile) {
+      return writeFileAsync(writeFilePath, JSON.stringify(profile));
+    });
+  };
 // Export these functions so we can test them
 module.exports = {
   fetchProfileAndWriteToFile: fetchProfileAndWriteToFile
