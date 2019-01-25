@@ -13,12 +13,12 @@ var Promise = require('bluebird');
 var crypto = require('crypto');
 var request = require('request');
 var pluk = require('./promiseConstructor');
-var userId = require('./promisification.js')
+var userId = require('./promisification.js');
 
 
 
 var fetchProfileAndWriteToFile = function(readFilePath, writeFilePath) {
- return pluk.pluckFirstLineFromFileAsync(readFilePath)
+  return pluk.pluckFirstLineFromFileAsync(readFilePath);
 };
 
 // Export these functions so we can test them
